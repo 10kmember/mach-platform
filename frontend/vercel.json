@@ -1,8 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "name": "mach-platform",
-  "version": 2,
-  "public": true,
   "rewrites": [
     {
       "source": "/platform-api/:path*",
