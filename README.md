@@ -10,3 +10,4 @@ The MACH agent-hosting platform — approval-gated agent hosting as a business.
 Live: https://mach-platform.vercel.app
 
 Secrets live in environment / server env files only — never in this repo.
+
