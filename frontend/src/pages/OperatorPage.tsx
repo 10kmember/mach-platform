@@ -292,6 +292,33 @@ export function OperatorPage() {
         </div>
       </section>
 
+      {/* Revenue by client */}
+      <section className="mb-10">
+        <h2 className="text-mono-label text-[0.7rem] uppercase tracking-widest text-[var(--color-ink-muted)] mb-4">
+          Revenue by client
+        </h2>
+        <div className="border border-[var(--color-midground)] divide-y divide-[var(--color-midground)]">
+          {Object.entries(
+            payments
+              .filter((p) => p.status === 'confirmed')
+              .reduce<Record<string, number>>((acc, p) => {
+                acc[p.client_email] = (acc[p.client_email] ?? 0) + p.amount_cents;
+                return acc;
+              }, {})
+          )
+            .sort((a, b) => b[1] - a[1])
+            .map(([email, total]) => (
+              <div key={email} className="px-4 py-3 flex items-center justify-between gap-4 text-sm">
+                <span className="min-w-0 truncate">{email}</span>
+                <span className="text-[var(--color-accent-secondary)] font-medium shrink-0">{cents(total)}</span>
+              </div>
+            ))}
+          {payments.filter((p) => p.status === 'confirmed').length === 0 && !loading && (
+            <p className="p-6 text-center text-sm text-[var(--color-ink-muted)]">No paying clients yet.</p>
+          )}
+        </div>
+      </section>
+
       {/* Fleet view */}
       <section>
         <h2 className="text-mono-label text-[0.7rem] uppercase tracking-widest text-[var(--color-ink-muted)] mb-4">

@@ -7,11 +7,36 @@
 }
 
 https://2.28.10.195 {
-	tls internal
+	tls internal {
+		# WebSocket needs classic HTTP/1.1 upgrades — RFC 8441 (WS over
+		# HTTP/2) is unreliable across browsers and causes reconnect loops
+		# on the dashboard's live feeds (chat + events).
+		alpn http/1.1
+	}
 	# Access log: fail2ban watches this for auth 401/429 storms.
 	log {
 		output file /var/log/caddy/access.log
 		format json
+	}
+
+	# SEO/discovery files at root + MACH Labs documentation page — replaces
+	# FastAPI's auto-Swagger at /docs (upstream-flavored, leaks API shape).
+	handle /docs* {
+		root * /var/www/mach-docs
+		rewrite * /index.html
+		file_server
+	}
+	handle /robots.txt {
+		root * /var/www/mach-docs
+		file_server
+	}
+	handle /sitemap.xml {
+		root * /var/www/mach-docs
+		file_server
+	}
+	handle /llms.txt {
+		root * /var/www/mach-docs
+		file_server
 	}
 
 	# MACH platform API (self-hosted FastAPI, port 9229).
@@ -30,6 +55,14 @@ https://2.28.10.195 {
 			# Dashboard has a DNS-rebinding guard: bound to 127.0.0.1 it only
 			# accepts loopback Host headers. Rewrite Host to match.
 			header_up Host 127.0.0.1:9119
+			# Its WS upgrade guard ALSO validates Origin against the bound
+			# host — through this proxy the browser's Origin is the public
+			# IP, which 403s and loops the reconnect. Host check (above) is
+			# the real DNS-rebinding defense; Origin is redundant here.
+			# Delete the inbound Origin, then set a loopback one (header_up
+			# without - appends rather than replaces, so delete first).
+			header_up -Origin
+			header_up Origin "http://127.0.0.1:9119"
 		}
 	}
 }

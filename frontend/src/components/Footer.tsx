@@ -112,7 +112,7 @@ export function Footer() {
           <div className="max-w-[28ch]">
             <Logo size={24} />
             <p className="mt-4 font-display italic font-normal text-[1.125rem] leading-snug text-[var(--color-ink)]">
-              Mach. Set it once. It&rsquo;s already working.
+              MACH Labs. Set it once. It&rsquo;s already working.
             </p>
             <p className="mt-4 text-[0.875rem] text-[var(--color-ink-muted)] leading-relaxed">
               The managed home for AI agents. We handle the infrastructure, monitoring, and updates so your agents stay on, quietly, reliably, around the clock.
@@ -147,7 +147,7 @@ export function Footer() {
           <div className="max-w-[28ch] mb-6">
             <Logo size={24} />
             <p className="mt-4 font-display italic font-normal text-[1.125rem] leading-snug text-[var(--color-ink)]">
-              Mach. Set it once. It&rsquo;s already working.
+              MACH Labs. Set it once. It&rsquo;s already working.
             </p>
             <p className="mt-4 text-[0.875rem] text-[var(--color-ink-muted)] leading-relaxed">
               The managed home for AI agents. We handle the infrastructure, monitoring, and updates so your agents stay on, quietly, reliably, around the clock.
@@ -181,7 +181,7 @@ export function Footer() {
         <div className="mt-10 lg:mt-14 pt-6 border-t border-[var(--color-border)]">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <p className="text-mono-label text-[0.7rem] text-[var(--color-ink-muted)]">
-              &copy; 2026 Mach. All rights reserved.
+              &copy; 2026 MACH Labs. All rights reserved.
             </p>
             <p className="text-mono-label text-[0.7rem] text-[var(--color-ink-muted)]">
               SOC 2 Type II &middot; GDPR &middot; HIPAA-ready &middot; ISO 27001 aligned

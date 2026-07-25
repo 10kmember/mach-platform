@@ -46,7 +46,7 @@ function AppRoutes() {
   // ── Authenticated console routes ─────────────────────────────────────
   // These render inside the AppShell — no public Navbar/Footer. Once a
   // client is in the platform, they're in the product, not the brochure.
-  const isConsoleRoute = route === 'dashboard' || route === 'operator';
+  const isConsoleRoute = route === 'dashboard' || route === 'ops-cathedral';
 
   if (isConsoleRoute && !user && !initialLoading) {
     return <SignInPage />;
@@ -63,7 +63,7 @@ function AppRoutes() {
   if (isConsoleRoute) {
     return (
       <AppShell active={route}>
-        {route === 'operator' ? <OperatorPage /> : <DashboardPage />}
+        {route === 'ops-cathedral' ? <OperatorPage /> : <DashboardPage />}
       </AppShell>
     );
   }
@@ -113,7 +113,7 @@ function AppRoutes() {
 
 function AppChrome() {
   const { route } = useHashRoute();
-  const isConsoleRoute = route === 'dashboard' || route === 'operator';
+  const isConsoleRoute = route === 'dashboard' || route === 'ops-cathedral';
 
   if (isConsoleRoute) {
     // Console: AppShell owns all chrome — no public Navbar/Footer.

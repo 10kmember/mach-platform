@@ -3,6 +3,7 @@ import {
   Plus,
   Cpu,
   Terminal,
+  Banknote,
   Globe,
   Code2,
   Activity,
@@ -60,7 +61,7 @@ function AgentIcon({ type }: { type: string }) {
 
 export function DashboardPage() {
   const { user, initialLoading } = useAuth();
-  const { agents, skills, usage, loading, error, refetch } = useDashboardData(user?.id ?? null);
+  const { agents, usage, loading, error, refetch } = useDashboardData(user?.id ?? null);
   const [showAdd, setShowAdd] = useState(false);
   const [newName, setNewName] = useState('');
   const [newType, setNewType] = useState('mach_one');
@@ -129,9 +130,9 @@ export function DashboardPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {[
               { label: 'Total Agents', value: agents.length, icon: Cpu, color: 'var(--color-accent-tertiary)' },
-              { label: 'Active Now', value: activeAgents, icon: Activity, color: 'var(--color-accent-secondary)' },
-              { label: 'Total Skills', value: skills.length, icon: Terminal, color: 'var(--color-highlight)' },
-              { label: 'Total Runs', value: totalRuns, icon: Code2, color: 'var(--color-accent-primary)' },
+              { label: 'Live Now', value: activeAgents, icon: Activity, color: 'var(--color-accent-secondary)' },
+              { label: 'Total Runs', value: totalRuns, icon: Code2, color: 'var(--color-highlight)' },
+              { label: 'Total Cost', value: `$${(totalCost / 100).toFixed(2)}`, icon: Banknote, color: 'var(--color-accent-primary)' },
             ].map((stat, i) => (
               <Reveal key={stat.label} delay={i * 60}>
                 <div className="rounded-radius-md bg-[var(--color-bg-raised)] border border-[var(--color-border)] p-5 shadow-sm">
@@ -240,11 +241,13 @@ export function DashboardPage() {
             </div>
           ) : agents.length === 0 ? (
             <div className="rounded-radius-md bg-[var(--color-bg-raised)] border border-[var(--color-border)] p-10 text-center shadow-sm">
-              <Cpu size={32} strokeWidth={1.5} className="text-[var(--color-ink-muted)] mx-auto mb-4" />
-              <h3 className="text-h3 text-[var(--color-ink)] mb-2">No agents yet</h3>
-              <p className="text-body text-[var(--color-ink-muted)] mb-6">Deploy your first agent to get started.</p>
+              <Cpu size={32} strokeWidth={1.5} className="text-[var(--color-accent-tertiary)] mx-auto mb-4" />
+              <h3 className="text-h3 text-[var(--color-ink)] mb-2">Your first agent awaits</h3>
+              <p className="text-body text-[var(--color-ink-muted)] mb-6 max-w-md mx-auto">
+                Request an agent and our operator reviews it within a day. Once approved and your hosting is confirmed, it goes live on dedicated infrastructure — always on, working for you.
+              </p>
               <Button variant="primary" size="md" icon={Plus} iconPosition="left" onClick={() => setShowAdd(true)}>
-                Add your first agent
+                Request your first agent
               </Button>
             </div>
           ) : (

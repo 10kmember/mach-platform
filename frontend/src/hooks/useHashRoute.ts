@@ -18,7 +18,7 @@ export type RouteName =
   | 'api-reference'
   | 'architecture'
   | 'dashboard'
-  | 'operator'
+  | 'ops-cathedral'
   | 'signin'
   | 'signup';
 
@@ -41,7 +41,7 @@ const ROUTES: Record<string, RouteName> = {
   '#/api-reference': 'api-reference',
   '#/architecture': 'architecture',
   '#/dashboard': 'dashboard',
-  '#/operator': 'operator',
+  '#/ops-cathedral': 'ops-cathedral',
   '#/signin': 'signin',
   '#/signup': 'signup',
 };

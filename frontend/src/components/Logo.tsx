@@ -40,7 +40,7 @@ export function Logo({ size = 22, variant = 'ink', className = '' }: LogoProps) 
         className="font-display font-semibold tracking-[-0.01em]"
         style={{ fontSize: size, color: textColor, lineHeight: 1 }}
       >
-        Mach
+        MACH Labs
       </span>
     </span>
   );

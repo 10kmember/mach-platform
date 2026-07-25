@@ -15,7 +15,7 @@ export function AppShell({ children, active }: { children: ReactNode; active: st
   const nav = [
     { id: 'dashboard', label: 'Console', icon: LayoutDashboard, href: '#/dashboard' },
     ...(user?.is_admin
-      ? [{ id: 'operator', label: 'Operator', icon: ShieldCheck, href: '#/operator' }]
+      ? [{ id: 'ops-cathedral', label: 'Operator', icon: ShieldCheck, href: '#/ops-cathedral' }]
       : []),
   ];
 
@@ -25,7 +25,7 @@ export function AppShell({ children, active }: { children: ReactNode; active: st
       <aside className="w-56 shrink-0 border-r border-[var(--color-midground)] flex flex-col">
         <a href="#/dashboard" className="flex items-center gap-2 px-5 py-5 border-b border-[var(--color-midground)]">
           <Cpu size={20} strokeWidth={1.5} className="text-[var(--color-accent-tertiary)]" />
-          <span className="font-display text-sm tracking-wide">MACH Console</span>
+          <span className="font-display text-sm tracking-wide">MACH Labs</span>
         </a>
         <nav className="flex-1 py-4">
           {nav.map((item) => {
