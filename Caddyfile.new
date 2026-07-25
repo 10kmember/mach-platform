@@ -1,0 +1,35 @@
+# MACH front door — TLS on the box.
+# 443: Hermes dashboard (/) + MACH platform API (/platform-api/*).
+
+:80 {
+	root * /usr/share/caddy
+	file_server
+}
+
+https://2.28.10.195 {
+	tls internal
+	# Access log: fail2ban watches this for auth 401/429 storms.
+	log {
+		output file /var/log/caddy/access.log
+		format json
+	}
+
+	# MACH platform API (self-hosted FastAPI, port 9229).
+	# trusted_proxies: honor Vercel's edge IPs so X-Forwarded-For carries the
+	# REAL client IP through (fail2ban bans attackers, not Vercel's relay).
+	handle /platform-api/* {
+		uri strip_prefix /platform-api
+		reverse_proxy 127.0.0.1:9229 {
+			trusted_proxies 76.76.21.0/24 76.223.126.0/24 3.32.0.0/15 18.196.0.0/15 35.156.0.0/14 52.58.0.0/15
+		}
+	}
+
+	# Hermes dashboard (port 9119)
+	handle {
+		reverse_proxy 127.0.0.1:9119 {
+			# Dashboard has a DNS-rebinding guard: bound to 127.0.0.1 it only
+			# accepts loopback Host headers. Rewrite Host to match.
+			header_up Host 127.0.0.1:9119
+		}
+	}
+}

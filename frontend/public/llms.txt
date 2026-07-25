@@ -1,0 +1,48 @@
+# Mach
+
+> Mach is the managed home for AI agents. We host, monitor, and keep agents running around the clock so individuals and companies don't have to manage infrastructure, API keys, or uptime themselves.
+
+## What we do
+
+Mach provides a managed hosting platform for AI agents — both first-party (Mach Agent) and third-party (Hermes, Claude Code, Codex). Users deploy agents in under a minute, connect them to channels like Email, Telegram, WhatsApp, and API, and attach scheduled "Skills" that run recurring tasks. Mach handles the infrastructure, daily backups, automatic updates, and monitoring.
+
+## Who it's for
+
+- **Personal plans** — individuals, small teams, and founders who want 1–3 agents running personal or project tasks without managing servers.
+- **Corporate plans** — departments and enterprises that need 3–5 agents with SSO, audit logs, RBAC, dedicated infrastructure, and uptime SLAs.
+
+## Key concepts
+
+- **Agent** — a hosted AI agent instance (first-party or third-party) that runs 24/7 on Mach's infrastructure.
+- **Skill** — a packaged, repeatable workflow that an agent executes on a schedule or continuously (e.g. inbox triage, price watch, daily brief, repo sentry).
+- **Channel** — the interface through which a user interacts with an agent (Email, Telegram, WhatsApp, Browser, API, Webhook).
+
+## Pages
+
+- [Home](https://mach.ai/) — landing page with product overview
+- [Agents](https://mach.ai/#/agents) — catalog of hosted agents
+- [Skills](https://mach.ai/#/skills) — skills library and live monitoring dashboard
+- [Pricing](https://mach.ai/#/pricing) — personal and corporate pricing plans
+- [About](https://mach.ai/#/about) — company values and contact
+
+## Technology
+
+- Frontend: React, TypeScript, Vite, Tailwind CSS
+- Backend: Python, FastAPI, SQLAlchemy, raw PostgreSQL
+- Process manager: systemd (auto-restart, starts on boot)
+- Auth: Argon2 password hashing, opaque bearer tokens
+
+## Security & compliance
+
+- SOC 2 Type II
+- GDPR compliant
+- HIPAA-ready architecture
+- ISO 27001 aligned
+- Data encryption at rest and in transit
+- SSO (SAML / OIDC) on corporate plans
+- Audit logs and role-based access control on corporate plans
+
+## Contact
+
+- General: hello@mach.ai
+- Enterprise: enterprise@mach.ai
