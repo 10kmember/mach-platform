@@ -299,7 +299,13 @@ export function DashboardPage() {
                           ? 'Approved — the operator will share payment details with you. Your agent goes live once payment clears.'
                           : agent.status === 'rejected'
                             ? 'This request was not approved. Contact the operator if you believe this is an error.'
-                            : `Created ${formatDate(agent.created_at)}`}
+                            : (() => {
+                                const spend = usage
+                                  .filter((u) => u.agent_id === agent.id)
+                                  .reduce((s, u) => s + u.cost_cents, 0);
+                                const runs = usage.filter((u) => u.agent_id === agent.id).length;
+                                return `Created ${formatDate(agent.created_at)}${runs > 0 ? ` · ${runs} runs · $${(spend / 100).toFixed(2)}` : ''}`;
+                              })()}
                     </div>
 
                     <div className="flex gap-2">

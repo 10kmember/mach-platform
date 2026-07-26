@@ -19,7 +19,7 @@ export function useDashboardData(userId: string | null): DashboardData {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchAll = useCallback(async () => {
+  const fetchAll = useCallback(async (quiet = false) => {
     if (!userId) {
       setAgents([]);
       setSkills([]);
@@ -28,7 +28,7 @@ export function useDashboardData(userId: string | null): DashboardData {
       setError(null);
       return;
     }
-    setLoading(true);
+    if (!quiet) setLoading(true);
     setError(null);
     try {
       const [agentsRes, skillsRes, usageRes] = await Promise.all([
@@ -50,5 +50,13 @@ export function useDashboardData(userId: string | null): DashboardData {
     fetchAll();
   }, [fetchAll]);
 
-  return { agents, skills, usage, loading, error, refetch: fetchAll };
+  // Live console: quiet-refresh every 30s so status changes (approvals,
+  // go-lives) surface without the client hammering Refresh.
+  useEffect(() => {
+    if (!userId) return;
+    const id = setInterval(() => { void fetchAll(true); }, 30_000);
+    return () => clearInterval(id);
+  }, [userId, fetchAll]);
+
+  return { agents, skills, usage, loading, error, refetch: () => fetchAll() };
 }

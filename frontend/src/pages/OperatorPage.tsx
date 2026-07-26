@@ -58,6 +58,12 @@ export function OperatorPage() {
     void load();
   }, [load]);
 
+  // Operator pulse: quiet refresh every 30s — a live queue is the point.
+  useEffect(() => {
+    const id = setInterval(() => { void load(); }, 30_000);
+    return () => clearInterval(id);
+  }, [load]);
+
   async function decide(id: string, action: 'approve' | 'reject') {
     setActing(id);
     try {
@@ -108,6 +114,19 @@ export function OperatorPage() {
     .reduce((s, p) => s + p.amount_cents, 0);
   const uniqueClients = new Set(fleet.map((a) => a.client_email)).size;
 
+  // Revenue trend: last 14 days of confirmed payments as a sparkline.
+  const trend = (() => {
+    const days: number[] = new Array(14).fill(0);
+    const now = Date.now();
+    for (const p of payments) {
+      if (p.status !== 'confirmed' || !p.created_at) continue;
+      const age = Math.floor((now - new Date(p.created_at).getTime()) / 86_400_000);
+      if (age >= 0 && age < 14) days[13 - age] += p.amount_cents;
+    }
+    return days;
+  })();
+  const trendMax = Math.max(...trend, 1);
+
   const stats = [
     { label: 'In queue', value: pending.length, icon: Clock },
     { label: 'Awaiting payment', value: awaitingPayment.length, icon: Banknote },
@@ -145,7 +164,7 @@ export function OperatorPage() {
       )}
 
       {/* Stats strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-10">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
         {stats.map((s) => {
           const Icon = s.icon;
           return (
@@ -158,6 +177,27 @@ export function OperatorPage() {
             </div>
           );
         })}
+      </div>
+
+      {/* Revenue trend — 14-day sparkline */}
+      <div className="border border-[var(--color-midground)] p-4 mb-10">
+        <div className="text-[0.65rem] uppercase tracking-widest text-[var(--color-ink-muted)] mb-3">
+          Revenue — last 14 days
+        </div>
+        <div className="flex items-end gap-1 h-12">
+          {trend.map((v, i) => (
+            <div
+              key={i}
+              title={`$${(v / 100).toFixed(2)}`}
+              className="flex-1 transition-all"
+              style={{
+                height: `${Math.max(4, (v / trendMax) * 100)}%`,
+                backgroundColor: v > 0 ? 'var(--color-accent-secondary)' : 'var(--color-midground)',
+                opacity: v > 0 ? 1 : 0.35,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Approval queue */}
