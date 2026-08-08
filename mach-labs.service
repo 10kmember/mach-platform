@@ -1,11 +1,11 @@
 [Unit]
-Description=MACH Platform API (FastAPI + PostgreSQL)
+Description=MACH Labs API
 After=network.target postgresql.service
 Wants=postgresql.service
 
 [Service]
 Type=simple
-WorkingDirectory=/root/mach-platform/api
+WorkingDirectory=/root/mach-labs/api
 ExecStart=/usr/local/lib/hermes-agent/venv/bin/uvicorn main:app --host 127.0.0.1 --port 9229
 Restart=always
 RestartSec=3
