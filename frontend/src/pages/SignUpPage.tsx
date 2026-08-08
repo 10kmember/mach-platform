@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { ArrowRight, AlertCircle, Loader2, User, Building2 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
-import { useHashRoute } from '../hooks/useHashRoute';
+import { useRoute } from '../hooks/useRoute';
 import { Button } from '../components/Button';
 import { Reveal } from '../components/Reveal';
 import { Logo } from '../components/Logo';
@@ -10,7 +10,7 @@ type PlanChoice = 'personal' | 'corporate';
 
 export function SignUpPage() {
   const { signUp, loading, error, clearError } = useAuth();
-  const { navigate } = useHashRoute();
+  const { navigate } = useRoute();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -153,7 +153,7 @@ export function SignUpPage() {
               Already have an account?{' '}
             </span>
             <a
-              href="#/signin"
+              href="/signin"
               onClick={(e) => {
                 e.preventDefault();
                 navigate('signin');

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, Mail } from 'lucide-react';
 import { Logo } from './Logo';
-import { routeHref, type RouteName } from '../hooks/useHashRoute';
+import { routeHref, type RouteName } from '../hooks/useRoute';
 
 interface FooterLink {
   label: string;

@@ -107,7 +107,7 @@ export function ApiReferencePage() {
               <p className="text-lead text-[rgba(239,230,211,0.8)] max-w-[52ch] mx-auto mb-8">
                 Code samples in Python, JavaScript, Go, and curl. Complete request and response schemas, error codes, and rate limits.
               </p>
-              <LinkButton href="#/resources" variant="highlight" size="lg" icon={ArrowRight}>
+              <LinkButton href="/resources" variant="highlight" size="lg" icon={ArrowRight}>
                 Browse the docs
               </LinkButton>
             </div>

@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { LinkButton } from './Button';
 import { Reveal } from './Reveal';
-import { routeHref } from '../hooks/useHashRoute';
+import { routeHref } from '../hooks/useRoute';
 
 interface Bullet {
   icon: LucideIcon;

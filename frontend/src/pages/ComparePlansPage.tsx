@@ -3,7 +3,7 @@ import { PageHeader } from '../components/PageHeader';
 import { LinkButton } from '../components/Button';
 import { Reveal } from '../components/Reveal';
 import { BarRace } from '../components/artifacts/BarRace';
-import { routeHref } from '../hooks/useHashRoute';
+import { routeHref } from '../hooks/useRoute';
 
 interface Feature {
   label: string;

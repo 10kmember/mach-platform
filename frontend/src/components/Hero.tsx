@@ -2,7 +2,7 @@ import { RadioTower, ArrowRight } from 'lucide-react';
 import { LinkButton } from './Button';
 import { SignalDial } from './SignalDial';
 import { Reveal } from './Reveal';
-import { routeHref } from '../hooks/useHashRoute';
+import { routeHref } from '../hooks/useRoute';
 
 export function Hero() {
   return (

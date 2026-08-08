@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from 'react';
 import { LogIn, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
-import { useHashRoute } from '../hooks/useHashRoute';
+import { useRoute } from '../hooks/useRoute';
 import { Button } from '../components/Button';
 import { Reveal } from '../components/Reveal';
 import { Logo } from '../components/Logo';
 
 export function SignInPage() {
   const { signIn, loading, error, clearError } = useAuth();
-  const { navigate } = useHashRoute();
+  const { navigate } = useRoute();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -100,7 +100,7 @@ export function SignInPage() {
               New to Mach?{' '}
             </span>
             <a
-              href="#/signup"
+              href="/signup"
               onClick={(e) => {
                 e.preventDefault();
                 navigate('signup');

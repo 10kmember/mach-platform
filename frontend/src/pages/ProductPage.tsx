@@ -4,7 +4,7 @@ import { LinkButton } from '../components/Button';
 import { Reveal } from '../components/Reveal';
 import { OrbitConstellation } from '../components/artifacts/OrbitConstellation';
 import { Connectors } from '../components/Connectors';
-import { routeHref } from '../hooks/useHashRoute';
+import { routeHref } from '../hooks/useRoute';
 
 interface Pillar {
   icon: LucideIcon;

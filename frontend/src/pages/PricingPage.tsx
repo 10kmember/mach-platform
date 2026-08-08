@@ -20,7 +20,7 @@ import { PageHeader } from '../components/PageHeader';
 import { LinkButton } from '../components/Button';
 import { Reveal } from '../components/Reveal';
 import { FrequencyTrace } from '../components/artifacts/FrequencyTrace';
-import { routeHref } from '../hooks/useHashRoute';
+import { routeHref } from '../hooks/useRoute';
 
 type Mode = 'personal' | 'corporate';
 type Billing = 'monthly' | 'annual';

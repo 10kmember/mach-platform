@@ -94,7 +94,7 @@ export function AgentCatalogPage() {
                     </div>
                     <div className="flex flex-col items-start lg:items-end gap-2">
                       <span className="font-display font-bold text-[1.5rem] text-[var(--color-ink)]">{agent.startingPrice}</span>
-                      <LinkButton href="#/pricing" variant="secondary" size="md" icon={ArrowRight}>
+                      <LinkButton href="/pricing" variant="secondary" size="md" icon={ArrowRight}>
                         Deploy
                       </LinkButton>
                     </div>

@@ -2,9 +2,11 @@
 
 > Mach is the managed home for AI agents. We host, monitor, and keep agents running around the clock so individuals and companies don't have to manage infrastructure, API keys, or uptime themselves.
 
+Site: https://machlabs.uk
+
 ## What we do
 
-Mach provides a managed hosting platform for AI agents — both first-party (Mach Agent) and third-party (Hermes, Claude Code, Codex). Users deploy agents in under a minute, connect them to channels like Email, Telegram, WhatsApp, and API, and attach scheduled "Skills" that run recurring tasks. Mach handles the infrastructure, daily backups, automatic updates, and monitoring.
+Mach provides managed hosting for AI agents — both first-party (Mach Agent) and third-party (leading open agent runtimes such as Claude Code and Codex). Users deploy agents in under a minute, connect them to channels like Email, Telegram, WhatsApp, and API, and attach scheduled "Skills" that run recurring tasks. Mach handles the infrastructure, daily backups, automatic updates, and monitoring. Every account is reviewed by a human before activation.
 
 ## Who it's for
 
@@ -19,30 +21,39 @@ Mach provides a managed hosting platform for AI agents — both first-party (Mac
 
 ## Pages
 
-- [Home](https://mach.ai/) — landing page with product overview
-- [Agents](https://mach.ai/#/agents) — catalog of hosted agents
-- [Skills](https://mach.ai/#/skills) — skills library and live monitoring dashboard
-- [Pricing](https://mach.ai/#/pricing) — personal and corporate pricing plans
-- [About](https://mach.ai/#/about) — company values and contact
+- [Home](https://machlabs.uk/) — landing page with product overview
+- [Product](https://machlabs.uk/product) — what a managed agent home includes
+- [Platform](https://machlabs.uk/platform) — approval-gated hosting platform
+- [How it works](https://machlabs.uk/how-it-works) — signup to running agent in under a minute
+- [Agents](https://machlabs.uk/agents) — hosted agent overview
+- [Agent Catalog](https://machlabs.uk/agent-catalog) — ready-to-deploy agents
+- [Skills](https://machlabs.uk/skills) — scheduled agent workflows
+- [Skills Library](https://machlabs.uk/skills-library) — attachable recurring tasks
+- [Use Cases](https://machlabs.uk/use-cases) — what Mach agents do all day
+- [Pricing](https://machlabs.uk/pricing) — personal and corporate plans
+- [Compare Plans](https://machlabs.uk/compare-plans) — plan comparison
+- [Resources](https://machlabs.uk/resources) — guides and documentation
+- [API Reference](https://machlabs.uk/api-reference) — platform REST API
+- [Architecture](https://machlabs.uk/architecture) — how Mach is built
+- [Security](https://machlabs.uk/security) — security practices
+- [About](https://machlabs.uk/about) — company and contact
+- [Sign up](https://machlabs.uk/signup) — create an account (human-reviewed)
 
 ## Technology
 
 - Frontend: React, TypeScript, Vite, Tailwind CSS
-- Backend: Python, FastAPI, SQLAlchemy, raw PostgreSQL
+- Backend: Python, FastAPI, SQLAlchemy, PostgreSQL
 - Process manager: systemd (auto-restart, starts on boot)
 - Auth: Argon2 password hashing, opaque bearer tokens
 
-## Security & compliance
+## Security
 
-- SOC 2 Type II
-- GDPR compliant
-- HIPAA-ready architecture
-- ISO 27001 aligned
-- Data encryption at rest and in transit
-- SSO (SAML / OIDC) on corporate plans
-- Audit logs and role-based access control on corporate plans
+- Argon2 password hashing; opaque bearer tokens
+- Encryption in transit (TLS everywhere)
+- Approval-gated provisioning — a human reviews every account
+- Least-privilege access throughout the stack
 
 ## Contact
 
-- General: hello@mach.ai
-- Enterprise: enterprise@mach.ai
+- Platform: https://machlabs.uk/signup
+- Email: cj.cojuror@gmail.com (monitored by our own agent)

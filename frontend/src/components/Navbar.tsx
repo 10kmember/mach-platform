@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import { Menu, X, ChevronDown, LogIn, ArrowRight, LogOut, UserCircle, LayoutDashboard, Sun, Moon } from 'lucide-react';
 import { Logo } from './Logo';
 import { Button, LinkButton } from './Button';
-import { useHashRoute, routeHref, type RouteName } from '../hooks/useHashRoute';
+import { useRoute, routeHref, type RouteName } from '../hooks/useRoute';
 import { useAuth } from '../hooks/useAuth';
 import { useTheme } from '../hooks/useTheme';
 
@@ -202,7 +202,7 @@ export function Navbar() {
   const hamburgerRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLDivElement | null>(null);
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const { route, navigate } = useHashRoute();
+  const { route, navigate } = useRoute();
   const { user, signOut } = useAuth();
   const { theme, toggle } = useTheme();
 

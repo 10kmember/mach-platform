@@ -132,7 +132,7 @@ export function SkillsLibraryPage() {
                   <span className="text-mono-label text-[0.6rem] text-[var(--color-ink-muted)] block mb-2">{skill.category}</span>
                   <h3 className="text-h3 text-[var(--color-ink)] mb-3">{skill.name}</h3>
                   <p className="text-body text-[var(--color-ink-muted)] mb-6">{skill.description}</p>
-                  <LinkButton href="#/agents" variant="secondary" size="md" icon={ArrowRight}>
+                  <LinkButton href="/agents" variant="secondary" size="md" icon={ArrowRight}>
                     Add to an agent
                   </LinkButton>
                 </article>

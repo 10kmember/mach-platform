@@ -177,7 +177,7 @@ export function AgentsPage() {
                     </div>
                   </div>
 
-                  <LinkButton href="#/pricing" variant="secondary" size="md" icon={ArrowRight}>
+                  <LinkButton href="/pricing" variant="secondary" size="md" icon={ArrowRight}>
                     Deploy this agent
                   </LinkButton>
                 </article>

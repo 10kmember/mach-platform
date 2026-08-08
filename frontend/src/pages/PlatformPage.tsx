@@ -90,7 +90,7 @@ export function PlatformPage() {
               <p className="text-lead text-[rgba(239,230,211,0.8)] max-w-[52ch] mx-auto mb-8">
                 Read the full architecture breakdown and see how each layer fits together.
               </p>
-              <LinkButton href="#/architecture" variant="highlight" size="lg" icon={ArrowRight}>
+              <LinkButton href="/architecture" variant="highlight" size="lg" icon={ArrowRight}>
                 View architecture
               </LinkButton>
             </div>
